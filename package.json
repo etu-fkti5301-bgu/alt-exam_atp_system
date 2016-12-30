@@ -1,0 +1,25 @@
+{
+  "name": "alt-exam_atp_system",
+  "version": "1.0.0",
+  "description": "Core ATP scripts was generated using GHCJS compiler.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/etu-fkti5301-bgu/alt-exam_atp_system.git"
+  },
+  "author": "unknown students",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/etu-fkti5301-bgu/alt-exam_atp_system/issues"
+  },
+  "engines": {
+    "node": "6.9.2"
+  },
+  "homepage": "https://github.com/etu-fkti5301-bgu/alt-exam_atp_system#readme",
+  "dependencies": {},
+  "devDependencies": {},
+  "keywords": []
+}
