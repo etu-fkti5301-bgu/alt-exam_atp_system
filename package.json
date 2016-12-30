@@ -16,7 +16,8 @@
     "url": "https://github.com/etu-fkti5301-bgu/alt-exam_atp_system/issues"
   },
   "engines": {
-    "node": "6.9.2"
+    "node": "6.9.2",
+    "ejs": "2.4.1"
   },
   "homepage": "https://github.com/etu-fkti5301-bgu/alt-exam_atp_system#readme",
   "dependencies": {
