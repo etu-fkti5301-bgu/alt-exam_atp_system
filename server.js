@@ -1,27 +1,37 @@
-var express = require('express'),
-    app = express();
-var child = require('child_process');
+var express     = require('express');
+var bodyParser  = require('body-parser');
+var child       = require('child_process');
+
+var app         = express();
 
 app.set('port', (process.env.PORT || 5000));
 
-app.get('/', function(req,res) {
-  res.sendFile(__dirname + '/index.html');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.listen(app.get('port'), function () {
+  console.log('[LOG.INFO]: Server has started. Listening on port ' + app.get('port') + '.');
 });
 
-app.post('/process', function(req, res) {
+app.get('/', function(req, res) {
+  res.sendFile(__dirname + '/index.html');
+
+  console.log('[LOG.INFO]: Connection to server.')
+});
+
+app.post('/', function(req, res) {
   var atp = child.spawn('node', ['./js/atp/core.js', req.body.message]);
 
   atp.stdout.on('data', function(data) {
-    res.end(data);
-
-    console.log('[LOG]: Results sent.');
+    console.log('[LOG.INFO]: Received message: ' + req.body.message);
+    res.send(data);
+    res.end();
+    console.log('[LOG.INFO]: Results sent to client.');
   });
 
   atp.stderr.on('data', function(data) {
+    console.log('[LOG.INFO]: Received message: ' + req.body.message);
     res.end();
-
-    console.log('[LOG]: Error. Incorrect message.')
+    console.log('[LOG.ERROR]: Received message isn\'t correct.')
   });
 });
-
-app.listen(app.get('port'));
