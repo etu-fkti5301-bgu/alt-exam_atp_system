@@ -14,24 +14,23 @@ app.listen(app.get('port'), function () {
 });
 
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
-
-  console.log('[LOG.INFO]: Connection to server.')
+	res.sendFile(__dirname + '/index.html');
+	console.log('[LOG.INFO]: Connection to server.')
 });
 
 app.post('/', function(req, res) {
-  var atp = child.spawn('node', ['./js/atp/core.js', req.body.message]);
-
-  atp.stdout.on('data', function(data) {
-    console.log('[LOG.INFO]: Received message: ' + req.body.message);
-    res.send(data);
-    res.end();
-    console.log('[LOG.INFO]: Results sent to client.');
-  });
+	var atp = child.spawn('node', ['./js/atp/core.js', req.body.formulainput]);
+	atp.stdout.on('data', function(data) {
+		console.log('[LOG.INFO]: Received message: ' + req.body.formulainput);
+		var html = '<h3>Results:</h3><p>' + data + '</p><br/><a href="/">Try again</a>';
+		res.send(html);
+		res.end();
+		console.log('[LOG.INFO]: Results sent to client.');
+  	});
 
   atp.stderr.on('data', function(data) {
-    console.log('[LOG.INFO]: Received message: ' + req.body.message);
-    res.end();
-    console.log('[LOG.ERROR]: Received message isn\'t correct.')
+	console.log('[LOG.INFO]: Received message: ' + req.body.formulainput);
+	res.end();
+	console.log('[LOG.ERROR]: Received message isn\'t correct.')
   });
 });

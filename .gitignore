@@ -2,4 +2,5 @@
 \#*
 .\#*
 *.*~
+# local install directory for npm modules, server does not need it
 node_modules
