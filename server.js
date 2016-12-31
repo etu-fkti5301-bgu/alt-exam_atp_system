@@ -2,8 +2,14 @@ var express = require('express'),
     app = express();
 var child = require('child_process');
 
-app.post('/', function(req, res) {
-  var atp = child.spawn('node', ['./atp.js', req.body.message]);
+app.set('port', (process.env.PORT || 5000));
+
+app.get('/', function(req,res) {
+  res.sendFile(__dirname + '/index.html');
+});
+
+app.post('/process', function(req, res) {
+  var atp = child.spawn('node', ['./js/atp/core.js', req.body.message]);
 
   atp.stdout.on('data', function(data) {
     res.end(data);
@@ -18,12 +24,4 @@ app.post('/', function(req, res) {
   });
 });
 
-app.get('/',function(req,res){
-
-  res.sendFile(__dirname + '/index.html');
-
-});
-
-var port = process.env.PORT || 8080;
-
-app.listen(port);
+app.listen(app.get('port'));
