@@ -8,28 +8,28 @@ app.set('port', (process.env.PORT || 5000));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/index.html');
-    console.log('[LOG.INFO]: Connection to server.')
+  res.sendFile(__dirname + '/index.html');
+  console.log('[LOG.INFO]: Connection to server.')
 });
 
 app.get('/css/:style', function(req, res) {
-    res.sendFile(__dirname + '/css/' + req.params.style);
+  res.sendFile(__dirname + '/css/' + req.params.style);
 });
 
 app.post('/', function(req, res) {
-    var atp = child.spawn('node', ['./js/atp/core.js', /*req.body.alg,*/ req.body.input]);
+  var atp = child.spawn('node', ['./js/atp/core.js', /*req.body.alg,*/ req.body.input]);
 
-    console.log('[LOG.INFO]: Received algorithm: ' +
-      '\"' + req.body.alg + '\".');
-    console.log('[LOG.INFO]: Received input: ' +
-      '\"' + req.body.input + '\".');
+  console.log('[LOG.INFO]: Received algorithm: ' +
+    '\"' + req.body.alg + '\".');
+  console.log('[LOG.INFO]: Received input: ' +
+    '\"' + req.body.input + '\".');
 
-    atp.stdout.on('data', function(output) {
-        res.send(encodeURIComponent(output));
-        res.end();
+  atp.stdout.on('data', function(output) {
+    res.send(encodeURIComponent(output));
+    res.end();
 
-        console.log('[LOG.INFO]: Correct received message. Results sent to client.');
-    });
+    console.log('[LOG.INFO]: Correct received message. Results sent to client.');
+  });
 
   atp.stderr.on('data', function(output) {
     res.end();
