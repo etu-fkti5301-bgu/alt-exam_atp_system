@@ -12,6 +12,10 @@ app.get('/', function(req, res) {
     console.log('[LOG.INFO]: Connection to server.')
 });
 
+app.get('/css/:style', function(req, res) {
+    res.sendFile(__dirname + '/css/' + req.params.style);
+});
+
 app.post('/', function(req, res) {
     var atp = child.spawn('node', ['./js/atp/core.js', req.body.message]);
     console.log('[LOG.INFO]: Received message: ' +
