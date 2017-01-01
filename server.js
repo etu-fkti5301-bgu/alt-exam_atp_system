@@ -17,20 +17,21 @@ app.get('/css/:style', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-    var atp = child.spawn('node', ['./js/atp/core.js', req.body.message]);
-    console.log('[LOG.INFO]: Received message: ' +
-      '\"' + req.body.message + '\".');
+    var atp = child.spawn('node', ['./js/atp/core.js', /*req.body.alg,*/ req.body.input]);
 
-    atp.stdout.on('data', function(data) {
-        var html = '<h3>Results:</h3><p>' + data + '</p><br/><a href="/">Try again</a>';
+    console.log('[LOG.INFO]: Received algorithm: ' +
+      '\"' + req.body.alg + '\".');
+    console.log('[LOG.INFO]: Received input: ' +
+      '\"' + req.body.input + '\".');
 
-        res.send(html);
+    atp.stdout.on('data', function(output) {
+        res.send(encodeURIComponent(output));
         res.end();
 
         console.log('[LOG.INFO]: Correct received message. Results sent to client.');
     });
 
-  atp.stderr.on('data', function(data) {
+  atp.stderr.on('data', function(output) {
     res.end();
 
     console.log('[LOG.ERROR]: Incorrect received message. Abort.');
