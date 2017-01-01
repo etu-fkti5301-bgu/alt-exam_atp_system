@@ -7,6 +7,7 @@
 </head>
 
 <body>
+
    <div class="header">
       <h1 class="header-title">
          Automated theorem proving system
@@ -14,12 +15,19 @@
    </div> <!-- end header -->
 
    <div class="main">
-      <form method="post" action="/">
-        <input name="message" class="input-field" placeholder="none"/>
-        <input type="submit"/>
-      </form>
-
-      <div class="output">
+      <div id="form">
+	<input id="formulainput" class="input-field" type="text" placeholder="none" size="100"/>
+	<select name="alg">
+	  <option value="pnf">PNF</option>
+	  <option value="snf">SNF</option>
+	  <option value="rsl">Resolution</option>
+	  <option value="unf">Unification</option>
+	</select>
+        <button name="submit">Submit</button>
+      </div>
+      <div id="output"> <!-- this div should be made visible after receiving results -->
+	<h4>Result:</h4>
+	<div id="output-content"></div> <!-- put here results -->
       </div>
    </div> <!-- end main -->
 
