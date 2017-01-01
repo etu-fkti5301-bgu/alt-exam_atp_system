@@ -1,3 +1,5 @@
+const errorMessage = 'null';
+
 var express     = require('express');
 var bodyParser  = require('body-parser');
 var child       = require('child_process');
@@ -32,6 +34,7 @@ app.post('/', function(req, res) {
   });
 
   atp.stderr.on('data', function(output) {
+    res.send(encodeURIComponent(errorMessage));
     res.end();
 
     console.log('[LOG.ERROR]: Incorrect received message. Abort.');
