@@ -30,14 +30,14 @@ app.post('/', function(req, res) {
     res.send(encodeURIComponent(output));
     res.end();
 
-    console.log('[LOG.INFO]: Correct received message. Results sent to client.');
+    console.log('[LOG.INFO]: Received correct message. Results sent to client.');
   });
 
   atp.stderr.on('data', function(output) {
     res.send(encodeURIComponent(errorMessage));
     res.end();
 
-    console.log('[LOG.ERROR]: Incorrect received message. Abort.');
+    console.log('[LOG.ERROR]: Received incorrect message. Abort.');
   });
 });
 
