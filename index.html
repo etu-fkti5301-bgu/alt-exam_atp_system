@@ -20,8 +20,9 @@
       request.onreadystatechange = function() {
         if (request.readyState == stateComplete)
           if (request.status == statusOK) {
-            // TODO: Process response on request.responseText.
+            var serverResponse = decodeURIComponent(request.responseText);
 
+            document.getElementById('output-content').innerHTML = serverResponse;
             document.getElementById('output').style.visibility = 'visible';
           }
       }
