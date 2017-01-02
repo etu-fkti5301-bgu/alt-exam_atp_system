@@ -37,8 +37,8 @@
               response = JSON.parse(serverResponse);
               innerHTML =
                 '<p>' +
-                '<b>Formula: </b>' + response.parsed_formulas[0] + '</br>' +
-                '<b>Result: </b>' + response.result[0] + '</br>' +
+                '<b>Formula: </b>' + response.parsed[0] + '</br>' +
+                '<b>Result: </b>'+ response.result[0] + '</br>' +
                 '</p>';
             } else {
               innerHTML = '<p>' + errorMessage + '</p>';
