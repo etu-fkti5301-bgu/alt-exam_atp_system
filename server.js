@@ -19,7 +19,7 @@ app.get('/css/:style', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-  var atp = child.spawn('node', ['./js/atp/core.js', /*req.body.alg,*/ req.body.input]);
+  var atp = child.spawn('node', ['./js/atp/core.js', req.body.alg, req.body.input]);
 
   console.log('info: Received algorithm: ' +
     '\"' + req.body.alg + '\".');
