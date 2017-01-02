@@ -20,7 +20,7 @@
       request.onreadystatechange = function() {
         if (request.readyState == stateComplete)
           if (request.status == statusOK) {
-            var serverResponse = decodeURIComponent(request.responseText);
+            var serverResponse = decodeURIComponent(request.responseText).replace(/\\/g, "&#");
 
             document.getElementById('output-content').innerHTML = serverResponse;
             document.getElementById('output').style.visibility = 'visible';
