@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
-  console.log('[LOG.INFO]: Connection to server.')
+  console.log('info: Connection to server.')
 });
 
 app.get('/css/:style', function(req, res) {
@@ -21,26 +21,26 @@ app.get('/css/:style', function(req, res) {
 app.post('/', function(req, res) {
   var atp = child.spawn('node', ['./js/atp/core.js', /*req.body.alg,*/ req.body.input]);
 
-  console.log('[LOG.INFO]: Received algorithm: ' +
+  console.log('info: Received algorithm: ' +
     '\"' + req.body.alg + '\".');
-  console.log('[LOG.INFO]: Received input: ' +
+  console.log('info: Received input: ' +
     '\"' + req.body.input + '\".');
 
   atp.stdout.on('data', function(output) {
     res.send(encodeURIComponent(output));
     res.end();
 
-    console.log('[LOG.INFO]: Received correct message. Results sent to client.');
+    console.log('info: Received correct message. Results sent to client.');
   });
 
   atp.stderr.on('data', function(output) {
     res.send(encodeURIComponent(errorMessage));
     res.end();
 
-    console.log('[LOG.ERROR]: Received incorrect message. Abort.');
+    console.log('error: Received incorrect message. Abort.');
   });
 });
 
 app.listen(app.get('port'), function () {
-  console.log('[LOG.INFO]: Server has started. Listening on port ' + app.get('port') + '.');
+  console.log('info: Server has started. Listening on port ' + app.get('port') + '.');
 });
