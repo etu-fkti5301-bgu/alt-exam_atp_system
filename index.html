@@ -18,13 +18,26 @@
       request.open('POST', '/', true);
       request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       request.onreadystatechange = function() {
-        if (request.readyState == stateComplete)
+        if (request.readyState == stateComplete) {
           if (request.status == statusOK) {
-            var serverResponse = decodeURIComponent(request.responseText).replace(/\\/g, "&#");
+            var response, innerHTML,
+                serverResponse = decodeURIComponent(request.responseText).replace(/\\/g, "&#");
 
-            document.getElementById('output-content').innerHTML = serverResponse;
+            if (serverResponse != 'undefined') {
+              response = JSON.parse(serverResponse);
+              innerHTML =
+                '<p>' +
+                '<b>Formula: </b>' + response.parsed_formulas[0] + '</br>' +
+                '<b>Result: </b>' + response.result[0] + '</br>' +
+                '</p>';
+            } else {
+              innerHTML = 'undefined';
+            }
+
+            document.getElementById('output-content').innerHTML = innerHTML;
             document.getElementById('output').style.visibility = 'visible';
           }
+        }
       }
 
       request.send(message);
@@ -55,7 +68,6 @@
       </div>
 
       <div id="output"> <!-- this div should be made visible after receiving results -->
-        <h4>Result:</h4>
         <div id="output-content"></div> <!-- put results here -->
       </div>
 
