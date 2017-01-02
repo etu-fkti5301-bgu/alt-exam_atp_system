@@ -1,4 +1,4 @@
-const errorMessage = 'null';
+const errorMessage = 'undefined';
 
 var express     = require('express');
 var bodyParser  = require('body-parser');
