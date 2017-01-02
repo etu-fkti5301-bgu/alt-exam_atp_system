@@ -35,7 +35,11 @@ app.post('/', function(req, res) {
     '\"' + req.body.sndInput + '\".');
 
   atp.stdout.on('data', function(output) {
-    res.send(encodeURIComponent(output));
+    if (output != 'undefined\n')
+      res.send(encodeURIComponent(output));
+    else
+      res.send(encodeURIComponent(errorMessage));
+
     res.end();
 
     console.log('info: Received correct message. Results sent to client.');
@@ -45,7 +49,7 @@ app.post('/', function(req, res) {
     res.send(encodeURIComponent(errorMessage));
     res.end();
 
-    console.log('error: Received incorrect message. Abort.');
+    console.log('error: **** happenned.');
   });
 });
 
