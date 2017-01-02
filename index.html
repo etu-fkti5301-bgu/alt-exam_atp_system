@@ -31,7 +31,8 @@
         if (request.readyState == stateComplete) {
           if (request.status == statusOK) {
             var response, innerHTML,
-                serverResponse = decodeURIComponent(request.responseText).replace(/\\/g, "&#");
+                serverResponse = decodeURIComponent(request.responseText).replace(/\\n/g, " | ")
+                                                                         .replace(/\\/g, "&#");
 
             if (serverResponse != 'undefined') {
               response = JSON.parse(serverResponse);
