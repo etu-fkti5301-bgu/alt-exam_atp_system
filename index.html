@@ -21,10 +21,10 @@
 
     function sendRequest() {
       var message = 'alg=' + encodeURIComponent(document.getElementById('alg').value) +
-        '&input=' + encodeURIComponent(document.getElementById('input').value);
+                    '&fstInput=' + encodeURIComponent(document.getElementById('fstInput').value) +
+                    '&sndInput=' + encodeURIComponent(document.getElementById('sndInput').value);
 
       var request = new XMLHttpRequest();
-
       request.open('POST', '/', true);
       request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       request.onreadystatechange = function() {
