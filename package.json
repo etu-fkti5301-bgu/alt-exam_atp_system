@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/etu-fkti5301-bgu/alt-exam_atp_system#readme",
   "dependencies": {
-    "express": "4.14"
+    "express": "4.14",
+    "body-parser": "1.15.2"
   },
   "devDependencies": {},
   "keywords": []
