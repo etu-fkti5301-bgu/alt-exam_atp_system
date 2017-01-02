@@ -10,6 +10,15 @@
           stateComplete = 4,
           statusOK = 200;
 
+    function checkAlgorithm() {
+      if (document.getElementById('alg').value == 'unf') {
+        document.getElementById('sndInput').hidden = false;
+      } else {
+        document.getElementById('sndInput').hidden = true;
+        document.getElementById('sndInput').value = '';
+      }
+    }
+
     function sendRequest() {
       var message = 'alg=' + encodeURIComponent(document.getElementById('alg').value) +
         '&input=' + encodeURIComponent(document.getElementById('input').value);
