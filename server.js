@@ -19,7 +19,13 @@ app.get('/css/:style', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-  var atp = child.spawn('node', ['./js/atp/core.js', req.body.alg, req.body.input]);
+  var atp;
+
+  if (req.body.alg != 'unf') {
+    atp = child.spawn('node', ['./js/atp/core.js', req.body.alg, req.body.fstInput]);
+  } else {
+    atp = child.spawn('node', ['./js/atp/core.js', req.body.alg, req.body.fstInput, req.body.sndInput]);
+  }
 
   console.log('info: Received algorithm: ' +
     '\"' + req.body.alg + '\".');
