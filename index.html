@@ -56,15 +56,16 @@
 
     <div class="main">
       <div id="form">
-        <input id="input" class="input-field" type="text" placeholder="none" size="100"/>
-        <select id="alg">
+        <input id="fstInput" class="input-field" type="text" placeholder="none" size="64"/>
+        <select id="alg" onchange="checkAlgorithm()">
           <option value="pnf">PNF</option>
           <option value="snf">SNF</option>
           <option value="rsl">Resolution</option>
           <option value="unf">Unification</option>
         </select>
+        <button onclick="sendRequest()">Submit</button></br>
 
-        <button onclick="sendRequest()">Submit</button>
+        <input id="sndInput" class="input-field" type="text" placeholder="none" size="64" hidden="true"/>
       </div>
 
       <div id="output"> <!-- this div should be made visible after receiving results -->
