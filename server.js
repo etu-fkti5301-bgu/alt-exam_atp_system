@@ -23,8 +23,10 @@ app.post('/', function(req, res) {
 
   console.log('info: Received algorithm: ' +
     '\"' + req.body.alg + '\".');
-  console.log('info: Received input: ' +
-    '\"' + req.body.input + '\".');
+  console.log('info: Received first input: ' +
+    '\"' + req.body.fstInput + '\".');
+  console.log('info: Received second input: ' +
+    '\"' + req.body.sndInput + '\".');
 
   atp.stdout.on('data', function(output) {
     res.send(encodeURIComponent(output));
