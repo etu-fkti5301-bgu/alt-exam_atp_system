@@ -6,7 +6,8 @@
   <title>Automated theorem proving system</title>
 
   <script type="text/javascript">
-    const stateComplete = 4,
+    const errorMessage = 'undefined',
+          stateComplete = 4,
           statusOK = 200;
 
     function sendRequest() {
@@ -31,7 +32,7 @@
                 '<b>Result: </b>' + response.result[0] + '</br>' +
                 '</p>';
             } else {
-              innerHTML = 'undefined';
+              innerHTML = '<p>' + errorMessage + '</p>';
             }
 
             document.getElementById('output-content').innerHTML = innerHTML;
