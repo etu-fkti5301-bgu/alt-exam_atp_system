@@ -62,7 +62,7 @@ app.post('/', function(req, res) {
     res.send(encodeURIComponent(stderrStreamErrorMessage));
     res.end();
 
-    console.log('error: Bad happenned.');
+    console.log('error: Something bad happenned.');
   });
 });
 
