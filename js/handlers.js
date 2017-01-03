@@ -56,7 +56,7 @@ function sendRequest() {
 
           default:
             response = JSON.parse(serverResponse);
-            printResult('<b>Formula: </b>' + response.parsed[0] + '</br>' +
+            printResult('<b>Parsed: </b>' + response.parsed[0] + '</br>' +
                         '<b>Result: </b>'+ response.result[0] + '</br>');
             break;
         }
