@@ -27,6 +27,10 @@ app.get('/css/:style', function(req, res) {
   res.sendFile(__dirname + '/css/' + req.params.style);
 });
 
+app.get('/js/:script', function(req, res) {
+  res.sendFile(__dirname + '/js/' + req.params.script);
+});
+
 // POST request to root is to compute stuff taken from client
 app.post('/', function(req, res) {
   var atp;
