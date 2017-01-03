@@ -68,10 +68,44 @@
 <body>
 
     <div class="header">
-      <h1 class="header-title">
+      <h2 class="header-title">
         Automated theorem proving system
-      </h1>
+      </h2>
     </div> <!-- end header -->
+
+    <div class="help">
+
+      <table border="1">
+        <i>Краткая справка по синтаксису. </i>
+        <a href="https://docs.google.com/document/d/1IKKWo-oFNXvFcxpbpnY9DCcPqJpUH-TWUGblzsAQkKM/edit?usp=sharing">Подробная справка</a>
+        <tr>
+          <th>∀ x</th>
+          <th>∃ x</th>
+          <th>x ∨ y</th>
+          <th>x ∧ y</th>
+          <th>x ⊃ y</th>
+          <th>x ⇔ y</th>
+          <th>¬x</th>
+          <th>⊤</th>
+          <th>⊥</th>
+        </tr>
+        <tr>
+          <td>forall x.</td>
+          <td>exists x.</td>
+          <td>x \/ y</td>
+          <td>x /\ y</td>
+          <td>x ==> y</td>
+          <td>x <=> y</td>
+          <td>~ x</td>
+          <td>true</td>
+          <td>false</td>
+        </tr>
+      </table>
+
+      <p>Предикат записывается как P(x, y). Имя переменной и предиката - последовательность латинских букв. Регистр имеет значение.<br/>
+      В алгоритмы PNF, SNF и Resolution следует подать формулу логики первого порядка. В алгоритм Unification следует подать два терма.<br/></p>
+
+    </div>
 
     <div class="main">
 
