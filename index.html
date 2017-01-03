@@ -110,7 +110,7 @@
     <div class="main">
 
       <div id="form">
-        <input id="fstInput" class="input-field" placeholder="none" size="64"/>
+        <input id="fstInput" class="input-field" size="64"/>
 
         <select id="alg" onchange="checkAlgorithm()">
           <option value="pnf">PNF</option>
@@ -121,7 +121,7 @@
 
         <button onclick="sendRequest()">Submit</button></br>
 
-        <input id="sndInput" class="input-field" placeholder="none" size="64" hidden="true"/>
+        <input id="sndInput" class="input-field" size="64" value="null" hidden="true"/>
       </div>
 
       <div id="output"> <!-- this div should be made visible after receiving results -->
