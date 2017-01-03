@@ -5,8 +5,10 @@ var bodyParser  = require('body-parser');
 var child       = require('child_process');
 
 // Stuff
-const debugMode = true;
-const errorMessage = 'undefined';
+const debugMode                 = true;
+
+const undefinedErrorMessage     = 'undefined'
+const stderrStreamErrorMessage  = 'stderr';
 
 var app         = express();
 
@@ -45,8 +47,7 @@ app.post('/', function(req, res) {
   }
 
   atp.stdout.on('data', function(output) {
-    // Core can return result or 'undefined' if something went wrong. TODO: Detect types of errors.
-    res.send(encodeURIComponent((output != 'undefined\n') ? (output) : (errorMessage)));
+    res.send(encodeURIComponent(output));
     res.end();
 
     console.log('info: Received correct message. Results sent to client.');
@@ -54,10 +55,10 @@ app.post('/', function(req, res) {
 
   // Output to stderr means something went wrong.
   atp.stderr.on('data', function(output) {
-    res.send(encodeURIComponent(errorMessage));
+    res.send(encodeURIComponent(stderrStreamErrorMessage));
     res.end();
 
-    console.log('error: **** happenned.');
+    console.log('error: Bad happenned.');
   });
 });
 
