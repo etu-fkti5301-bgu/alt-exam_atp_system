@@ -5,7 +5,7 @@ var bodyParser  = require('body-parser');
 var child       = require('child_process');
 
 // Stuff
-const debugMode = false;
+const debugMode = true;
 const errorMessage = 'undefined';
 
 var app         = express();
