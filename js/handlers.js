@@ -29,6 +29,8 @@ function sendRequest() {
     return;
   }
 
+  document.getElementById('output').style.visibility = 'hidden';
+
   var message = 'alg=' + encodeURIComponent(document.getElementById('alg').value) +
                 '&fstInput=' + encodeURIComponent(document.getElementById('fstInput').value) +
                 '&sndInput=' + encodeURIComponent(document.getElementById('sndInput').value);
